@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :records
-  get 'records/index'
+  resources :records, only: [:index]
+
+  root 'records#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
