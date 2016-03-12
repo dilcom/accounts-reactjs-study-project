@@ -10,7 +10,7 @@
     @setState "#{name}": e.target.value
   handleSubmit: (e) ->
     e.preventDefault()
-    $.post @props.submitPath, { record: @state }, @handleSubmitSuccess, 'JSON'
+    $.post @props.resourcePath, { record: @state }, @handleSubmitSuccess, 'JSON'
   handleSubmitSuccess: (data) ->
     @props.handleNewRecord data
     @setState @getInitialState()
@@ -50,4 +50,4 @@
         type: 'submit'
         className: 'btn btn-primary'
         disabled: !@valid()
-        'Create records!'
+        'Create record'

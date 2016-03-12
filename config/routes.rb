@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :records, only: [:index, :create]
+  resources :records, only: [:index, :create, :destroy]
 
   root 'records#index'
 

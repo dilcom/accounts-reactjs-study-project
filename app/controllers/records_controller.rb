@@ -11,6 +11,11 @@ class RecordsController < ApplicationController
     end
   end
 
+  def destroy
+    resource.destroy
+    head :no_content
+  end
+
   protected
 
     def resource_association
@@ -22,7 +27,7 @@ class RecordsController < ApplicationController
     end
 
     def resource
-      @resource
+      @resource ||= resource_association.find(params[:id])
     end
 
     def build_resource

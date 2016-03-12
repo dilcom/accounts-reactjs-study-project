@@ -7,19 +7,24 @@
     records = @state.records.slice()
     records.push(record)
     @setState records: records
-  credit: ->
+  deleteRecord: (record) ->
+    records = @state.records.slice()
+    index = records.indexOf(record)
+    records.splice(index, 1)
+    @setState records: records
+  debit: ->
     elements = @state.records.filter (val) -> val.amount > 0
     elements.reduce ((sum, val) -> sum + parseFloat(val.amount)), 0
-  debit: ->
+  credit: ->
     elements = @state.records.filter (val) -> val.amount < 0
     elements.reduce ((sum, val) -> sum + parseFloat(val.amount)), 0
   balance: ->
     @debit() + @credit()
   render: ->
     React.DOM.div
-      class_name: 'records'
+      className: 'records'
       React.DOM.h2
-        class_name: 'title'
+        className: 'title'
         'Records'
       React.DOM.div
         className: 'row'
@@ -30,7 +35,7 @@
       React.createElement RecordForm,
         key: 'create-record',
         handleNewRecord: @addNewRecord,
-        submitPath: @props.submitPath
+        resourcePath: @props.resourcePath
       React.DOM.table
         className: 'table table-bordered'
         React.DOM.thead null,
@@ -38,6 +43,7 @@
             React.DOM.td null, 'Title'
             React.DOM.td null, 'Date'
             React.DOM.td null, 'Amount'
+            React.DOM.td null, 'Actions'
         React.DOM.tbody null,
           for record in @state.records
-            React.createElement Record, key: record.id, record: record
+            React.createElement Record, key: record.id, record: record, resourcePath: @props.resourcePath, handleDeleteRecord: @deleteRecord
