@@ -32,7 +32,7 @@
         React.DOM.input
           type: 'text'
           className: 'form-control'
-          placeholder: '...the title...'
+          placeholder: 'Title'
           name: 'title'
           value: @state.title
           onChange: @handleChange
