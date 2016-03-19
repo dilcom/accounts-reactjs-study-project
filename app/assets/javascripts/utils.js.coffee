@@ -6,4 +6,4 @@ I18n.defaultLocale = 'en'
 I18n.fallbacks = true
 
 @formatAmount = (value) ->
-  "$ #{Number(value).toLocaleString()}"
+  I18n.l("currency", Number(value))

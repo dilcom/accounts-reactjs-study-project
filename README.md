@@ -3,6 +3,7 @@ Example react-rails application (first steps made according to [a tutorial](http
 
 # Roadmap
 - ~~I18n support~~
-- inline editing of records
+- ~~inline editing of records~~
+- redux?
 - authorization
 - styles
