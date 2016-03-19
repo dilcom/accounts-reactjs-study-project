@@ -1,20 +1,13 @@
 @LocaleSelector = React.createClass
-  getInitialState: ->
-    locales: ['en', 'ru']
-    currentLocale: I18n.locale
-  handleSelect: (data) ->
-    locale = data.target.value
-    @setState currentLocale: locale
-    @props.handleLocaleSelect(locale)
   render: ->
     React.DOM.div
       className: 'row'
       React.DOM.select
         key: 'locale-selector'
-        defaultValue: @state.currentLocale
+        defaultValue: I18n.locale
         multiple: false
-        onChange: @handleSelect
-        for locale in @state.locales
+        onChange: @props.handleLocaleSelect
+        for locale in ['en', 'ru']
           React.DOM.option
             key: locale
             value: locale

@@ -1,6 +1,12 @@
 @AccountsApp = React.createClass
-  handleLocaleSelect: (locale) ->
+  handleLocaleSelect: (data) ->
+    locale = data.target.value
     I18n.locale = locale
+    $.ajax
+      method: 'PUT'
+      url: 'update_locale'
+      dataType: 'JSON'
+      data: { locale: locale }
     @forceUpdate()
   render: ->
     React.DOM.div
