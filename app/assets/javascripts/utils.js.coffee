@@ -1,3 +1,4 @@
+#= require_tree ./helpers
 #= require i18n
 #= require i18n/translations
 
