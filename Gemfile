@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.6'
 # React js
 gem 'react-rails', '~> 1.6.0'
+# Locales for js
+gem "i18n-js", ">= 3.0.0.rc11"
 # SLIM
 gem "slim-rails"
 # Use sqlite3 as the database for Active Record

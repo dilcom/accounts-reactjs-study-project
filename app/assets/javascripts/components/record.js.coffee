@@ -16,4 +16,4 @@
         React.DOM.button
           className: 'btn btn-danger'
           onClick: @handleDelete
-          'Delete'
+          I18n.t('helpers.actions.delete')

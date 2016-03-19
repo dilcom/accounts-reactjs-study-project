@@ -23,7 +23,6 @@
         React.DOM.input
           type: 'date'
           className: 'form-control'
-          placeholder: 'Please enter the date...'
           name: 'date'
           value: @state.date
           onChange: @handleChange
@@ -32,7 +31,7 @@
         React.DOM.input
           type: 'text'
           className: 'form-control'
-          placeholder: 'Title'
+          placeholder: I18n.t('react_components.record_form.title_placeholder')
           name: 'title'
           value: @state.title
           onChange: @handleChange
@@ -42,7 +41,7 @@
           type: 'number'
           step: 0.01
           className: 'form-control'
-          placeholder: '...and the amount'
+          placeholder: I18n.t('react_components.record_form.amount_placeholder')
           name: 'amount'
           value: @state.amount
           onChange: @handleChange
@@ -50,4 +49,4 @@
         type: 'submit'
         className: 'btn btn-primary'
         disabled: !@valid()
-        'Create record'
+        I18n.t('helpers.actions.save')

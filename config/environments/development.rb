@@ -38,6 +38,8 @@ Rails.application.configure do
 
   # Use livereload for faster development
   config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
+  # Generate i18njs file
+  config.middleware.use I18n::JS::Middleware
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

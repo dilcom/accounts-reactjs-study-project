@@ -20,4 +20,24 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  react_components:
+    records:
+      title: Records
+      debit: Debit
+      credit: Credit
+      balance: Balance
+      table_headers:
+        title: Title
+        amount: Amount
+        date: Date
+        actions: Actions
+    record_form:
+      title_placeholder: Please enter the title...
+      amount_placeholder: ...and the amount
+  helpers:
+    actions:
+      delete: Delete
+      save: Save
+  locales:
+    en: English
+    ru: Русский

@@ -1,0 +1,19 @@
+ru:
+  react_components:
+    records:
+      title: Записи
+      debit: Приход
+      credit: Расход
+      balance: Баланс
+      table_headers:
+        title: Название
+        amount: Сумма
+        date: Дата
+        actions: Действия
+    record_form:
+      title_placeholder: Пожалуйста введите название...
+      amount_placeholder: ...и сумму
+  helpers:
+    actions:
+      delete: Удалить
+      save: Сохранить
