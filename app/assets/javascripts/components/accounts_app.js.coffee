@@ -1,4 +1,7 @@
 @AccountsApp = React.createClass
+  getInitialState: ->
+    I18n.locale = @props.locale
+    null
   handleLocaleSelect: (data) ->
     locale = data.target.value
     I18n.locale = locale
