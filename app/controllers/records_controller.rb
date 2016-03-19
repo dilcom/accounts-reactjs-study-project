@@ -16,6 +16,14 @@ class RecordsController < ApplicationController
     head :no_content
   end
 
+  def update
+    if resource.update_attributes(resource_params)
+      render json: resource
+    else
+      render json: resource.errors, status: :unprocessable_entity
+    end
+  end
+
   protected
 
     def resource_association

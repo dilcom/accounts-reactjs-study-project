@@ -2,6 +2,7 @@
   getInitialState: ->
     name: @props.name
     value: @props.value
+    oldValue: @props.value
     inputOptions: @props.inputOptions
     format: @props.format || @noFormat
     handleUpdate: @props.handleUpdate
@@ -9,14 +10,23 @@
   handleEditStart: ->
     @setState state: 'edit'
   handleEditEnd: ->
-    @state.handleUpdate(@state.name, @state.value, @handleSave)
-    @setState state: 'disabled'
+    if @state.oldValue == @state.value
+      @setState state: 'view'
+    else
+      @state.handleUpdate(@state.name, @state.value, @handleSave)
+      @setState state: 'disabled'
   handleChange: (e) ->
     @setState value: e.target.value
+  handleSave: ->
+    @setState state: 'view', old_value: @state.value
+  handleKeyDown: (e) ->
+    switch e.key
+      when 'Enter', 'Tab'
+        @handleEditEnd()
+      when 'Escape'
+        @setState state: 'view', value: @state.oldValue
   noFormat: (v) ->
     v
-  handleSave: ->
-    @setState state: 'view'
   render: ->
     React.DOM.td null,
       switch @state.state
@@ -25,6 +35,7 @@
             value: @state.value
             onBlur: @handleEditEnd
             onChange: @handleChange
+            onKeyDown: @handleKeyDown
             autoFocus: true
         when 'disabled'
           React.DOM.span

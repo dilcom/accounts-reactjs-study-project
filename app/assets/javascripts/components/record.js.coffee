@@ -12,18 +12,23 @@
       success: () =>
         @props.handleDeleteRecord @props.record
   handleUpdate: (name, value, callback) ->
-    console.log("#{name}: #{value}")
+    $.ajax
+      method: 'PUT'
+      url: "#{@props.resourcePath}/#{@props.record.id}"
+      dataType: 'JSON'
+      success: callback
+      data: { record: { "#{name}": value } }
   render: ->
     React.DOM.tr null,
-      React.createElement EditableCell,
-        value: @state.date
-        inputOptions: { type: 'date' }
-        name: 'date'
-        handleUpdate: @handleUpdate
       React.createElement EditableCell,
         value: @state.title
         inputOptions: { type: 'text' }
         name: 'title'
+        handleUpdate: @handleUpdate
+      React.createElement EditableCell,
+        value: @state.date
+        inputOptions: { type: 'date' }
+        name: 'date'
         handleUpdate: @handleUpdate
       React.createElement EditableCell,
         value: @state.amount

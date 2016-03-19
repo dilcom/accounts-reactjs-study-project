@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :records, only: [:index, :create, :destroy]
+  resources :records, only: [:index, :create, :destroy, :update]
   put 'update_locale', to: 'locales#update'
 
   root 'records#index'
