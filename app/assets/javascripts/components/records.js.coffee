@@ -10,6 +10,11 @@
     index = @state.records.indexOf(record)
     records = React.addons.update(@state.records, $splice: [[index, 1]])
     @setState records: records
+  updateRecord: (old_record, name, value) ->
+    index = @state.records.indexOf(old_record)
+    records = @state.records
+    records[index] = React.addons.update(records[index], $merge: { "#{name}": value })
+    @setState records: records
   debit: ->
     elements = @state.records.filter (val) -> val.amount > 0
     elements.reduce ((sum, val) -> sum + parseFloat(val.amount)), 0
@@ -44,4 +49,4 @@
             React.DOM.td null, I18n.t('react_components.records.table_headers.actions')
         React.DOM.tbody null,
           for record in @state.records
-            React.createElement Record, key: record.id, record: record, resourcePath: @props.resourcePath, handleDeleteRecord: @deleteRecord
+            React.createElement Record, key: record.id, record: record, resourcePath: @props.resourcePath, handleDeleteRecord: @deleteRecord, handleUpdateRecord: @updateRecord

@@ -1,5 +1,6 @@
 @Record = React.createClass
   getInitialState: ->
+    record: @props.record
     date: @props.record.date
     title: @props.record.title
     amount: @props.record.amount
@@ -16,7 +17,9 @@
       method: 'PUT'
       url: "#{@props.resourcePath}/#{@props.record.id}"
       dataType: 'JSON'
-      success: callback
+      success: =>
+        @props.handleUpdateRecord(@props.record, name, value)
+        callback()
       data: { record: { "#{name}": value } }
   render: ->
     React.DOM.tr null,
