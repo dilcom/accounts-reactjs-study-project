@@ -35,18 +35,19 @@
         React.createElement AmountBox, type: 'danger', amount: @credit(), text: I18n.t('react_components.records.credit')
         React.createElement AmountBox, type: 'info', amount: @balance(), text: I18n.t('react_components.records.balance')
       React.DOM.hr null
-      React.createElement RecordForm,
-        key: 'create-record',
-        handleNewRecord: @addNewRecord,
-        resourcePath: @props.resourcePath
       React.DOM.table
         className: 'table table-bordered'
         React.DOM.thead null,
           React.DOM.tr null,
-            React.DOM.td null, I18n.t('react_components.records.table_headers.title')
-            React.DOM.td null, I18n.t('react_components.records.table_headers.date')
-            React.DOM.td null, I18n.t('react_components.records.table_headers.amount')
-            React.DOM.td null, I18n.t('react_components.records.table_headers.actions')
+            React.DOM.td className: 'col-md-3', I18n.t('react_components.records.table_headers.title')
+            React.DOM.td className: 'col-md-3', I18n.t('react_components.records.table_headers.date')
+            React.DOM.td className: 'col-md-3', I18n.t('react_components.records.table_headers.amount')
+            React.DOM.td className: 'col-md-3', I18n.t('react_components.records.table_headers.actions')
         React.DOM.tbody null,
           for record in @state.records
             React.createElement Record, key: record.id, record: record, resourcePath: @props.resourcePath, handleDeleteRecord: @deleteRecord, handleUpdateRecord: @updateRecord
+      React.DOM.hr null
+      React.createElement RecordForm,
+        key: 'create-record',
+        handleNewRecord: @addNewRecord,
+        resourcePath: @props.resourcePath

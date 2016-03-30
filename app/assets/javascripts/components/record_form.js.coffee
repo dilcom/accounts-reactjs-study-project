@@ -19,15 +19,7 @@
       className: 'form-inline'
       onSubmit: @handleSubmit
       React.DOM.div
-        className: 'form-group'
-        React.DOM.input
-          type: 'date'
-          className: 'form-control'
-          name: 'date'
-          value: @state.date
-          onChange: @handleChange
-      React.DOM.div
-        className: 'form-group'
+        className: 'form-group col-md-3'
         React.DOM.input
           type: 'text'
           className: 'form-control'
@@ -36,7 +28,15 @@
           value: @state.title
           onChange: @handleChange
       React.DOM.div
-        className: 'form-group'
+        className: 'form-group col-md-3'
+        React.DOM.input
+          type: 'date'
+          className: 'form-control'
+          name: 'date'
+          value: @state.date
+          onChange: @handleChange
+      React.DOM.div
+        className: 'form-group col-md-3'
         React.DOM.input
           type: 'number'
           step: 0.01
